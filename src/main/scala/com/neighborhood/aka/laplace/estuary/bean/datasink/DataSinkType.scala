@@ -7,5 +7,6 @@ object DataSinkType extends Enumeration{
 
   type DataSinkType = Value
   val KAFKA = Value(0)
+  val HBASE = Value(1)
 
 }
