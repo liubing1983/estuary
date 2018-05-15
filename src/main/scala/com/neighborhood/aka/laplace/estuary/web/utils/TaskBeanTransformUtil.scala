@@ -10,9 +10,7 @@ import scala.collection.JavaConverters._
 object TaskBeanTransformUtil {
 
   def transform2Mysql2KafkaTaskInfoBean(requestBody: Mysql2kafkaTaskRequestBean): Mysql2KafkaTaskInfoBean = {
-    val taskInfo = new Mysql2KafkaTaskInfoBean
-    //任务id
-    taskInfo.syncTaskId = requestBody.getSyncTaskId
+    val taskInfo = new Mysql2KafkaTaskInfoBean(requestBody.getSyncTaskId)
     //监听用
     taskInfo.listenRetrytime = requestBody.getListenRetrytime
     if (requestBody.getListenTimeout > 0) taskInfo.listenTimeout = requestBody.getListenTimeout

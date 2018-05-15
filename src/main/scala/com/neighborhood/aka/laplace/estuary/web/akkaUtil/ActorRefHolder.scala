@@ -5,8 +5,6 @@ import java.util.concurrent.ConcurrentHashMap
 import akka.actor.{ActorRef, Props}
 import com.neighborhood.aka.laplace.estuary.core.akkaUtil.{SyncDaemon, theActorSystem}
 
-import scala.collection.mutable
-
 /**
   * Created by john_liu on 2018/3/10.
   */
@@ -15,7 +13,7 @@ object ActorRefHolder extends theActorSystem {
   //todo 保留重要ActorRef
   val syncDaemon = system.actorOf(Props(classOf[SyncDaemon]), "syncDaemon")
 
-  val actorRefMap: ConcurrentHashMap[String,ActorRef] = new ConcurrentHashMap[String,ActorRef]()
+  val actorRefMap: ConcurrentHashMap[String, ActorRef] = new ConcurrentHashMap[String, ActorRef]()
 
 
 

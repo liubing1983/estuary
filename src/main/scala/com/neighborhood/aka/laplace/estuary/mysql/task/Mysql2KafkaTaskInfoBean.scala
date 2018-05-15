@@ -9,7 +9,9 @@ import com.neighborhood.aka.laplace.estuary.bean.resource.MysqlBean
 /**
   * Created by john_liu on 2018/2/7.
   */
-final class Mysql2KafkaTaskInfoBean extends MysqlBean with KafkaBean with BaseExtractBean {
+final case class Mysql2KafkaTaskInfoBean(
+                                          override val syncTaskId: String
+                                        ) extends MysqlBean with KafkaBean with BaseExtractBean {
 
 
   /**
@@ -90,6 +92,11 @@ final class Mysql2KafkaTaskInfoBean extends MysqlBean with KafkaBean with BaseEx
   // zookeeper 链接超时设置,单位毫秒
   var zookeeperTimeout = 10000
 }
+
 object Mysql2KafkaTaskInfoBean {
-  def apply: Mysql2KafkaTaskInfoBean = new Mysql2KafkaTaskInfoBean()
+  def apply(
+             syncTaskId: String
+           ): Mysql2KafkaTaskInfoBean = new Mysql2KafkaTaskInfoBean(
+    syncTaskId
+  )
 }

@@ -2,6 +2,7 @@ package com.neighborhood.aka.laplace.estuary.core.akkaUtil
 
 import akka.actor.SupervisorStrategy.{Restart, Resume}
 import akka.actor.{Actor, ActorLogging, ActorRef, InvalidActorNameException, OneForOneStrategy, Props}
+import com.neighborhood.aka.laplace.estuary.cluster.ClientMessage
 import com.neighborhood.aka.laplace.estuary.core.task.SyncTask
 import com.neighborhood.aka.laplace.estuary.web.akkaUtil.ActorRefHolder
 
@@ -24,7 +25,9 @@ class SyncDaemon extends Actor with ActorLogging {
         log.info(s"${actorAndReason._2},taskType:${task.taskType}")
       })
     }
+    case ClientMessage("check")
     case x => log.warning(s"SyncDeamon unhandled message $x")
+
   }
 
   /**
